@@ -1,22 +1,22 @@
 import React from 'react';
-import FormatDate from '../FormatDate';
 import { Link } from 'react-router-dom';
 
 const TableRow = (props) => {
-    return props.items.map((zentime, index) => {
+    return props.items.map((user, index) => {
         return (<tr key={index}>
-            <th scope="row">{zentime.id}</th>
-            <td>{FormatDate(zentime.date_record)}</td>
-            <td>{zentime.time_record}</td>
+            <th scope="row">{user.id}</th>
+            <td>{user.name}</td>
+            <td>{user.email}</td>
+            <td>{user.role}</td>
             <td>
                 <div className="btn-group btn-group-sm">
                     <Link
-                        to={`/zentimes/${zentime.id}/edit`}
+                        to={`/users/${user.id}/edit`}
                         className="btn btn-primary">
                         Edit
                     </Link>
                     <button
-                        onClick={props.onDelete.bind(this, zentime.id)}
+                        onClick={props.onDelete.bind(this, user.id)}
                         index={index}
                         className="btn btn-danger">
                         Delete
@@ -30,7 +30,7 @@ const TableRow = (props) => {
 class Table extends React.Component {
     render() {
         if (this.props.items.length <= 0) {
-            return <div className="alert alert-info">Sorry, we don't find Zentime</div>;
+            return <div className="alert alert-info">Sorry, we don't find user</div>;
         }
 
         return (
@@ -38,8 +38,9 @@ class Table extends React.Component {
                 <thead className="thead-dark">
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Date Record</th>
-                        <th scope="col">Time in minutes</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">E-mail</th>
+                        <th scope="col">Role</th>
                         <th scope="col"></th>
                     </tr>
                 </thead>
