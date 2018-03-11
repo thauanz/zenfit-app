@@ -1,8 +1,11 @@
 import React from 'react'
 
 class ErrorHandler extends React.Component {
-    formFieldError =  (field, message) => {
-        return <li key={field}><strong>{field}:</strong> {message}</li>;
+    formFieldError =  (field, messages) => {
+        const items = messages.map((message, index) =>
+            <li key={index}><strong>{field}:</strong> {message}</li>
+        );
+        return items;
     }
 
     formError = (keys, errors) => {
