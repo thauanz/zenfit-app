@@ -2,6 +2,7 @@ import React from 'react';
 import ApiLogin from '../services/ApiLogin';
 import { Redirect } from 'react-router';
 import ErrorHandler from './ErrorHandler';
+import LoginInput from './Input';
 
 class Login extends React.Component {
     constructor(props) {
@@ -25,7 +26,7 @@ class Login extends React.Component {
                 this.setState({ errors: { message: data.error }});
             } else {
                 this.setState({ isRedirectTo: true, errors: {} });
-           }
+            }
         };
 
         ApiLogin.login(this.state.email, this.state.password, cb);
@@ -49,22 +50,16 @@ class Login extends React.Component {
                 <ErrorHandler errors={this.state.errors} type='alert' />
                 <form onSubmit={this.handleSubmit} className="col-sm-7">
                     <h2>Login</h2>
-                    <div className="form-group">
-                        <input type='email'
-                            onChange={this.handleChange}
-                            value={this.state.email}
-                            name='email'
-                            placeholder='Email address'
-                            className='form-control' />
-                    </div>
-                    <div className="form-group">
-                        <input type='password'
-                            onChange={this.handleChange}
-                            value={this.state.password}
-                            name='password'
-                            placeholder='Password'
-                            className='form-control' />
-                    </div>
+                    <LoginInput type='email'
+                        onChange={this.handleChange}
+                        value={this.state.email}
+                        name='email'
+                        placeholder='Email address' />
+                    <LoginInput type='password'
+                        onChange={this.handleChange}
+                        value={this.state.password}
+                        name='password'
+                        placeholder='Password' />
                     <div className="form-group">
                         <input type='submit' className='btn btn-primary' value='Login' />
                     </div>

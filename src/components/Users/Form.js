@@ -2,7 +2,7 @@ import React from 'react';
 import { Redirect } from 'react-router';
 import ErrorHandler from '../ErrorHandler';
 import ApiUsers from '../../services/ApiUsers';
-import UserInput from './Input.js';
+import UserInput from '../Input.js';
 
 class Form extends React.Component {
     constructor(props) {

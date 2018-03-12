@@ -2,6 +2,7 @@ import React from 'react';
 import ApiRegister from '../services/ApiRegister';
 import { Redirect } from 'react-router';
 import ErrorHandler from './ErrorHandler';
+import RegisterInput from './Input';
 
 class Register extends React.Component {
     constructor(props) {
@@ -28,7 +29,7 @@ class Register extends React.Component {
                 this.setState({ errors: data.errors });
             } else {
                 this.setState({ isRedirectTo: true, errors: {} });
-           }
+            }
         };
 
         ApiRegister.post(this.state.user, cb);
@@ -54,30 +55,21 @@ class Register extends React.Component {
 
                 <form onSubmit={this.handleSubmit} className="col-sm-7">
                     <h2>Register</h2>
-                    <div className="form-group">
-                        <input type='text'
-                            onChange={this.handleChange}
-                            value={this.state.user.name}
-                            name='name'
-                            placeholder='Full name'
-                            className='form-control' />
-                    </div>
-                    <div className="form-group">
-                        <input type='email'
-                            onChange={this.handleChange}
-                            value={this.state.user.email}
-                            name='email'
-                            placeholder='Email address'
-                            className='form-control' />
-                    </div>
-                    <div className="form-group">
-                        <input type='password'
-                            onChange={this.handleChange}
-                            value={this.state.user.password}
-                            name='password'
-                            placeholder='Password'
-                            className='form-control' />
-                    </div>
+                    <RegisterInput type='text'
+                        onChange={this.handleChange}
+                        value={this.state.user.name}
+                        name='name'
+                        placeholder='Full name' />
+                    <RegisterInput type='email'
+                        onChange={this.handleChange}
+                        value={this.state.user.email}
+                        name='email'
+                        placeholder='Email address' />
+                    <RegisterInput type='password'
+                        onChange={this.handleChange}
+                        value={this.state.user.password}
+                        name='password'
+                        placeholder='Password' />
                     <div className="form-group">
                         <input type='submit' className='btn btn-primary' value='Register' />
                     </div>

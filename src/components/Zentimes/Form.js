@@ -3,6 +3,7 @@ import { Redirect } from 'react-router';
 import ErrorHandler from '../ErrorHandler';
 import ApiZentimes from '../../services/ApiZentimes';
 import FormatDate from '../FormatDate';
+import ZentimeInput from '../Input';
 
 class Form extends React.Component {
     constructor(props) {
@@ -77,24 +78,16 @@ class Form extends React.Component {
 
                 <h2>Zentime</h2>
                 <form onSubmit={this.handleSubmit} className="col-sm-7">
-                    <div className="form-group">
-                        <input type='text'
-                            onChange={this.handleChange}
-                            value={this.state.zentime.date_record}
-                            name='date_record'
-                            placeholder='Date record'
-                            className='form-control'
-                        />
-                    </div>
-                    <div className="form-group">
-                        <input type='number'
-                            onChange={this.handleChange}
-                            value={this.state.zentime.time_record}
-                            name='time_record'
-                            placeholder='Time in minutes'
-                            className='form-control'
-                        />
-                    </div>
+                    <ZentimeInput type='text'
+                        onChange={this.handleChange}
+                        value={this.state.zentime.date_record}
+                        name='date_record'
+                        placeholder='Date record' />
+                    <ZentimeInput type='number'
+                        onChange={this.handleChange}
+                        value={this.state.zentime.time_record}
+                        name='time_record'
+                        placeholder='Time in minutes' />
                     <div className="form-group">
                         <input type='submit' className='btn btn-primary' value='Save' />
                     </div>
