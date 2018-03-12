@@ -2,9 +2,6 @@ import React from 'react';
 
 class Input extends React.Component {
     render() {
-        if (this.props.isVisible) {
-            return "";
-        }
         return (
             <div className="form-group">
                 <input type={this.props.type}
