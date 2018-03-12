@@ -17,16 +17,11 @@ class Register extends React.Component {
         }
 
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleChange = this.handleChange.bind(this)
     }
 
     handleSubmit = (e) => {
         e.preventDefault();
-
-        this.setState({ user: {
-            name: this.refs.name.value,
-            email: this.refs.email.value,
-            password: this.refs.password.value
-        }});
 
         var cb = (data) => {
             if (data.errors) {
@@ -40,6 +35,16 @@ class Register extends React.Component {
         return;
     }
 
+    handleChange(e) {
+        let target = e.target;
+        let name = target.name;
+        let value = target.value;
+
+        let user = {...this.state.user};
+        user[name] = value;
+        this.setState({user});
+    }
+
     render(){
         const { isRedirectTo } = this.state;
 
@@ -50,13 +55,28 @@ class Register extends React.Component {
                 <form onSubmit={this.handleSubmit} className="col-sm-7">
                     <h2>Register</h2>
                     <div className="form-group">
-                        <input type='text' ref='name' placeholder='Full name' className='form-control' />
+                        <input type='text'
+                            onChange={this.handleChange}
+                            value={this.state.user.name}
+                            name='name'
+                            placeholder='Full name'
+                            className='form-control' />
                     </div>
                     <div className="form-group">
-                        <input type='email' ref='email' placeholder='Email address' className='form-control' />
+                        <input type='email'
+                            onChange={this.handleChange}
+                            value={this.state.user.email}
+                            name='email'
+                            placeholder='Email address'
+                            className='form-control' />
                     </div>
                     <div className="form-group">
-                        <input type='password' ref='password' placeholder='Password' className='form-control' />
+                        <input type='password'
+                            onChange={this.handleChange}
+                            value={this.state.user.password}
+                            name='password'
+                            placeholder='Password'
+                            className='form-control' />
                     </div>
                     <div className="form-group">
                         <input type='submit' className='btn btn-primary' value='Register' />
