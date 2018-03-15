@@ -10,7 +10,7 @@ class Auth {
     }
 
     static isLoggedIn() {
-        return localStorage.getItem('jwt') !== null;
+        return localStorage.jwt !== undefined;
     }
 
     static getToken() {
