@@ -1,7 +1,7 @@
 import React from 'react';
 import ApiZentimes from '../../services/ApiZentimes';
 import { Link } from 'react-router-dom';
-import BoxFilter from './BoxFilter';
+import BoxFilter from '../BoxFilter';
 import TableZentime from './Table';
 
 class List extends React.Component {

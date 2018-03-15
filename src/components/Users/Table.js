@@ -1,5 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Auth from '../../modules/Auth';
+
+const LinkReport = (props) => {
+    if (props.role === "regular" && !Auth.isManagerUser()) {
+        return (
+            <Link
+                to={`/reports/${props.userId}`}
+                className="btn btn-info">
+                Report
+            </Link>
+        )
+    } else {
+        return "";
+    }
+};
 
 const TableRow = (props) => {
     return props.items.map((user, index) => {
@@ -21,6 +36,7 @@ const TableRow = (props) => {
                         className="btn btn-danger">
                         Delete
                     </button>
+                    <LinkReport role={user.role} userId={user.id} />
                 </div>
             </td>
         </tr>);

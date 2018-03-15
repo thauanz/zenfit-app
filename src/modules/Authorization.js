@@ -7,7 +7,7 @@ const Authorization = (allowedRoles) => {
             constructor(props) {
                 super(props)
 
-                this.state = { user: Auth.user() }
+                this.state = { user: Auth.getUser() }
             }
             render() {
                 const { role } = this.state.user

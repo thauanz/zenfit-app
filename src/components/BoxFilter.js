@@ -1,7 +1,6 @@
 import React from 'react';
 
 class BoxFilter extends React.Component {
-
     render() {
         return (
             <form onSubmit={this.props.onSubmit}>
