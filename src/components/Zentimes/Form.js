@@ -4,6 +4,7 @@ import ErrorHandler from '../ErrorHandler';
 import ApiZentimes from '../../services/ApiZentimes';
 import FormatDate from '../FormatDate';
 import ZentimeInput from '../Input';
+import DateInput from '../DateInput';
 
 class Form extends React.Component {
     constructor(props) {
@@ -78,11 +79,11 @@ class Form extends React.Component {
 
                 <h2>Zentime</h2>
                 <form onSubmit={this.handleSubmit} className="col-sm-7">
-                    <ZentimeInput type='text'
-                        onChange={this.handleChange}
+                    <DateInput onChange={this.handleChange}
                         value={this.state.zentime.date_record}
                         name='date_record'
-                        placeholder='Date record' />
+                        placeholder='Date record'
+                        className='form-control' />
                     <ZentimeInput type='number'
                         onChange={this.handleChange}
                         value={this.state.zentime.time_record}

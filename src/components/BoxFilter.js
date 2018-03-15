@@ -1,17 +1,16 @@
 import React from 'react';
+import DateInput from './DateInput';
 
 class BoxFilter extends React.Component {
     render() {
         return (
             <form onSubmit={this.props.onSubmit}>
-                <input type="text"
-                    onChange={this.props.onChange}
+                <DateInput onChange={this.props.onChange}
                     name="dateFrom"
                     value={this.props.dateFrom}
                     className="form-control mb-2"
                     placeholder="Date from"/>
-                <input type="text"
-                    onChange={this.props.onChange}
+                <DateInput onChange={this.props.onChange}
                     name="dateTo"
                     value={this.props.dateTo}
                     className="form-control mb-2"
