@@ -1,4 +1,5 @@
 import React from 'react';
+import LoginActions from '../actions/LoginActions';
 import ApiLogin from '../services/ApiLogin';
 import { Redirect } from 'react-router';
 import ErrorHandler from './ErrorHandler';
@@ -25,6 +26,8 @@ class Login extends React.Component {
             if (data.error) {
                 this.setState({ errors: { message: data.error }});
             } else {
+                var jwt = data.token;
+                LoginActions.loginUser(jwt);
                 this.setState({ isRedirectTo: true, errors: {} });
             }
         };

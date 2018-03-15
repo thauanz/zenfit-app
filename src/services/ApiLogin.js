@@ -18,12 +18,7 @@ class ApiLogin {
             body: data
         })
             .then((response) => response.json())
-            .then((responseJson) => {
-                var jwt = responseJson.token;
-                LoginActions.loginUser(jwt);
-                return responseJson;
-            })
-            .then(cb)
+           .then(cb)
             .catch((error) => {
                 console.error(error);
             });
